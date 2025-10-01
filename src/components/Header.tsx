@@ -1,6 +1,7 @@
 import { useTheme } from "@/context/theme-Provider";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Menu, Moon, Search, Sun } from "lucide-react"
 
 const Header = () => {
 
@@ -14,7 +15,12 @@ const Header = () => {
           <img src={isDark ? "/logo.png" : "/logo2.png"} alt="Logo" className="h-14" />
         </Link>
 
-        <div onClick= {() => setTheme(isDark ? "light" : "dark")}>toggle</div>
+        <div className = {`flex items-center cursor-pointer transition-transform duration-500 ${isDark ? "rotate-180" : "rotate-0"}`}
+         onClick= {() => setTheme(isDark ? "light" : "dark")}>
+            {isDark ? <Sun className="h-6 w-6 text-yellow-600 rotate-0 transition-all"/> : 
+                <Moon className="h-6 w-6 text-blue-600 rotate-0 transition-all"/>
+            }
+        </div>
       </div>
     </header>
   );
