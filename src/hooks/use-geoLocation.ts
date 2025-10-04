@@ -16,7 +16,6 @@ export function useGeolocation() {
 
   const getLocation = () => {
     setLocationData((prev) => ({...prev, isLoading: true, error: null}))
-
     if(!navigator.geolocation) {
       setLocationData({
         coordinate: null,
