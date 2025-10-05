@@ -1,7 +1,9 @@
 import CurrentWeather from "@/components/CurrentWeather";
+import HourlyTempreture from "@/components/Hourly_Tempreture";
 import Weather_Skeleton from "@/components/loading-skeletor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import WeatherDetails from "@/components/WeatherDetails";
 import { useGeolocation } from "@/hooks/use-geoLocation";
 import {
   useForCastQuery,
@@ -118,14 +120,16 @@ const WeatherDashboard = () => {
       </div>
 
       <div className="grid gap-6">
-            <div>
+            <div className="flex flex-col lg:flex-row gap-4">
               <CurrentWeather data = {weatherQuery.data} locationName ={locationName}/>
               
               {/* Current and Hourlt Weather */}
+              <HourlyTempreture data = {forecastQuery.data}/>
             </div>
 
             <div>
               {/* details */}
+              <WeatherDetails data={weatherQuery.data}/>
               {/* forecast */}
             </div>
       </div>
