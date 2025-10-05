@@ -1,9 +1,11 @@
 import CurrentWeather from "@/components/CurrentWeather";
 import HourlyTempreture from "@/components/Hourly_Tempreture";
+
 import Weather_Skeleton from "@/components/loading-skeletor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import WeatherDetails from "@/components/WeatherDetails";
+import WeatherForCast from "@/components/WeatherForeCast";
 import { useGeolocation } from "@/hooks/use-geoLocation";
 import {
   useForCastQuery,
@@ -24,9 +26,7 @@ const WeatherDashboard = () => {
   const weatherQuery = useWeatherQuery(coordinate);
   const forecastQuery = useForCastQuery(coordinate);
   const locationQuery = useReverseGeocodeQuery(coordinate);
-  console.log(weatherQuery.data);
-  console.log(forecastQuery.data);
-  console.log(locationQuery.data);
+console.log('weather datasis', weatherQuery.data)
 
   const handleRefresh = () => {
     getLocation();
@@ -78,7 +78,8 @@ const WeatherDashboard = () => {
   }
 
   const locationName = locationQuery.data?.[0];
-
+  console.log(locationName)
+ // API error
   if (weatherQuery.error || forecastQuery.error) {
     return (
       <Alert variant="destructive">
@@ -127,10 +128,11 @@ const WeatherDashboard = () => {
               <HourlyTempreture data = {forecastQuery.data}/>
             </div>
 
-            <div>
+            <div className="grid gap-6 md:grid-cols-2 items-start">
               {/* details */}
               <WeatherDetails data={weatherQuery.data}/>
               {/* forecast */}
+              <WeatherForCast data={forecastQuery.data}/>
             </div>
       </div>
 

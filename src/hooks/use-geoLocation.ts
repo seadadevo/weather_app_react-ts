@@ -70,5 +70,5 @@ export function useGeolocation() {
   return {
     ...locationData,
     getLocation,
-  };
+  }; // useGeoLocation => coordinate , error , getLocation , isLoading
 }
