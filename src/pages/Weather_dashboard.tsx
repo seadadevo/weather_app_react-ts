@@ -1,3 +1,4 @@
+import CurrentWeather from "@/components/CurrentWeather";
 import Weather_Skeleton from "@/components/loading-skeletor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -56,7 +57,7 @@ const WeatherDashboard = () => {
     );
   }
   if (!coordinate) {
-    console.log("Location Error:", locationError);
+   
     return (
       <Alert variant="destructive">
         <AlertTitle>
@@ -116,7 +117,19 @@ const WeatherDashboard = () => {
         </Button>
       </div>
 
-      {/* Current and Hourlt Weather */}
+      <div className="grid gap-6">
+            <div>
+              <CurrentWeather data = {weatherQuery.data} locationName ={locationName}/>
+              
+              {/* Current and Hourlt Weather */}
+            </div>
+
+            <div>
+              {/* details */}
+              {/* forecast */}
+            </div>
+      </div>
+
     </div>
   );
 };
